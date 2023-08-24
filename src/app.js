@@ -30,15 +30,6 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static(__dirname+'/public'))
 
-// app.get('/', (req,res)=>{
-//     let testUser = {
-//         name: "Cacho",
-//         last_name: "Pepe"
-//     }
-//     res.render('index', testUser)
-// })
-
-
 
 app.get('/', (req, res) => {
     res.send(`

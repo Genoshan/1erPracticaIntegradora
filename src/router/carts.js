@@ -8,8 +8,7 @@ const cartRouter = Router ();
 
 //CREATE
 cartRouter.post('/',async(req,res,next)=>{
-    try {
-        console.log(req.body)
+    try {        
         let one = await Cart.create(req.body)
         return res.status(201).json({
             success:true,

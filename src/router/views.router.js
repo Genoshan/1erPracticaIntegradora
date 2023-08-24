@@ -56,8 +56,7 @@ viewsRouter.get('/products/:page', async (req, res, next) => {
 viewsRouter.get('/carts', async (req, res, next) => {
     try {
         // Lógica para obtener los carritos desde la base de datos
-        const carts = await Cart.find();
-        console.log(carts)
+        const carts = await Cart.find();        
 
         // Renderiza la vista de la página de carritos y pasa los datos
         // res.render('carts', { carts });
