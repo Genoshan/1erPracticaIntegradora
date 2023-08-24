@@ -19,7 +19,7 @@ const ready = () => {
 }
 
 const app = express()
-//Template Engine Instance
+//Template Engine
 app.engine('handlebars', handlebars.engine({
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
