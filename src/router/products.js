@@ -23,7 +23,7 @@ productRouter.post('/',async(req,res,next)=>{
 productRouter.get('/',async(req,res,next)=>{
     try {
         let all = await Product.find()
-        //se buscan todos los estudiantes
+        //find all lproducts
         return res.status(200).json({
             success:true,
             response:all

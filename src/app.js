@@ -1,8 +1,11 @@
 import express from 'express'
+import handlebars from 'express-handlebars';
+import __dirname from "./utils.js";
 import { connect } from "mongoose";
 import errorHandler from "../middlewares/errorHandler.js";
 import notFoundHandler from "../middlewares/notFoundHandler.js";
 import indexRouter from './router/index.js';
+import viewsRouter from './router/views.router.js';
 
 const PORT = 8080
 
@@ -16,6 +19,38 @@ const ready = () => {
 }
 
 const app = express()
+//Template Engine Instance
+app.engine('handlebars', handlebars.engine({
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+    },
+}))
+app.set('views', __dirname+'/views')
+app.set('view engine', 'handlebars')
+
+app.use(express.static(__dirname+'/public'))
+
+// app.get('/', (req,res)=>{
+//     let testUser = {
+//         name: "Cacho",
+//         last_name: "Pepe"
+//     }
+//     res.render('index', testUser)
+// })
+
+
+
+app.get('/', (req, res) => {
+    res.send(`
+        <h1>Bienvenidos!</h1>
+        <ul>    
+            <li><a href="/products/1">Ver Productos</a></li>
+            <li><a href="/carts/1">Ver Carrito</a></li>
+        </ul>
+    `);
+});
+
+app.use('/', viewsRouter)
 
 //middlewares
 app.use(express.json());

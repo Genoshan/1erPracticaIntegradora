@@ -24,7 +24,7 @@ cartRouter.post('/',async(req,res,next)=>{
 cartRouter.get('/',async(req,res,next)=>{
     try {
         let all = await Cart.find()
-        //se buscan todos los estudiantes
+        //find all carts
         return res.status(200).json({
             success:true,
             response:all
